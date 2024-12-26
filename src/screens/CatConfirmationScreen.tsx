@@ -45,7 +45,7 @@ const CatConfirmationScreen = () => {
   );
   const to = account.address;
   const {
-    data: hash,
+    data: txhash,
     isPending,
     isError,
     sendTransaction,
@@ -53,7 +53,7 @@ const CatConfirmationScreen = () => {
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
-      hash,
+      hash:txhash,
     });
 
   useEffect(() => {
@@ -67,14 +67,18 @@ const CatConfirmationScreen = () => {
   const onTaskComplete = async () => {
     if (currentIndex === 2) {
       setIsPopupVisible(true);
+      console.log(sa)
+      console.log(to)
+      console.log(account.address)
       const transactionRequest: SendTransactionVariables<Config, number> = {
         account: sa,
-        to: to,
+        to: account.address,
         value: parseEther('0.00001'),
         type: 'eip1559',
       };
-      sendTransaction(transactionRequest);
-      console.log(hash);
+      console.log(transactionRequest)
+      await sendTransaction(transactionRequest);
+      console.log(txhash);
     } else {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % currentData.length);
     }
@@ -161,7 +165,7 @@ const CatConfirmationScreen = () => {
             {isConfirmed && (
               <div className="flex gap-2 justify-center">
                 <a
-                  href={`https://testnet.bscscan.com/tx/${hash}`}
+                  href={`https://testnet.bscscan.com/tx/${txhash}`}
                   target="_blank"
                   className="bg-gray-500 text-white px-4 py-2 rounded-full"
                 >
