@@ -53,7 +53,7 @@ const CatConfirmationScreen = () => {
 
   const { isLoading: isConfirming, isSuccess: isConfirmed } =
     useWaitForTransactionReceipt({
-      hash:txhash,
+      hash: txhash,
     });
 
   useEffect(() => {
@@ -133,6 +133,7 @@ const CatConfirmationScreen = () => {
             >
               ✖
             </button>
+           
             <button
               onClick={() =>
                 handleButtonClick(

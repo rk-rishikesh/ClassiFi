@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ onOptionChange }) => {
           onClick={handleCategoryClick}
         >
           <img
-            src="/images/category.jpg"
+            src="/images/category.png"
             alt="Category"
             className="w-8 h-8 rounded-full"
           />
@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ onOptionChange }) => {
           onClick={handleUserProfileClick}
         >
           <img
-            src="/images/user-profile.jpg"
+            src="/images/user-profile.png"
             alt="User Profile"
             className="w-10 h-10 rounded-full"
           />
