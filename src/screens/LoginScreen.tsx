@@ -18,7 +18,7 @@ const LoginScreen = () => {
   return (
     <div className="flex flex-col items-center justify-between h-screen py-8 bg-home px-4 sm:px-8">
       <div className="bg-home rounded-full w-36 h-12 flex items-center justify-center p-2 sm:w-48 sm:h-14">
-        <h1 className="text-xl font-bold text-white sm:text-2xl">TagFi</h1>
+        <h1 className="text-xl font-bold text-white sm:text-2xl">ClassiFi</h1>
       </div>
       <div className="flex flex-col items-center mt-8 sm:mt-12">
         <div className="w-56 h-56 flex items-center justify-center">

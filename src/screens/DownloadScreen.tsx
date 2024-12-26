@@ -5,7 +5,7 @@ const DownloadScreen = () => {
         <div className="flex flex-col h-screen bg-[#E0E0E2] p-4">
             <div className="flex-grow flex flex-col items-center justify-center">
                 <div className="flex items-center justify-center rounded-full bg-[#727774] w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40">
-                    <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white">TagFi</h1>
+                    <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white">ClassiFi</h1>
                 </div>
             </div>
             <div className="flex items-center justify-center mb-8 sm:mb-12">
