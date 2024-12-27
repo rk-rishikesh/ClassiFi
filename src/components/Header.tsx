@@ -24,8 +24,8 @@ const Header: React.FC<HeaderProps> = ({ onOptionChange }) => {
   };
 
   return (
-    <div className="w-full flex justify-center items-center mb-4">
-      <div className="flex justify-around py-4 bg-home rounded-full mt-6 w-[80%] lg:w-[30%]">
+    <div className="w-full flex justify-center items-center mb-4 px-3">
+      <div className="flex justify-around py-4 bg-home rounded-full mt-2 w-[100%] lg:w-[30%] gap-12">
         <div
           className="bg-white rounded-full w-14 h-14 cursor-pointer flex justify-center items-center"
           onClick={handleCategoryClick}

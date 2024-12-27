@@ -111,7 +111,6 @@ const garbageData = [
   }
 ];
 
-
 const FruitConfirmationScreen = () => {
   const category = useSelector((state: RootState) => state.category.category) as CategoryState;
   const [currentIndex, setCurrentIndex] = useState(0);
