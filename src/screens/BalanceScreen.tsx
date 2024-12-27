@@ -11,7 +11,7 @@ const BalanceScreen = () => {
 
     // WAGMI hooks
     const { address, isConnected } = useAccount();
-    
+
     const { data: addressData, isError, isLoading } = useBalance({ address });
 
     const [isCopied, setIsCopied] = useState(false);
@@ -51,10 +51,10 @@ const BalanceScreen = () => {
     }
 
     return (
-        <div className="flex flex-col min-h-screen bg-[#E0E0E2]">
+        <div className="flex flex-col min-h-screen bg-home">
             <div className="flex-grow overflow-y-auto p-2">
-                <div className="w-full sm:w-3/4 md:w-2/3 lg:w-full h-36 sm:h-40 bg-[#727774] rounded-xl mt-4 relative p-12">
-                    <div className="absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 bg-white rounded-full">
+                <div className="w-full sm:w-3/4 md:w-2/3 lg:w-full h-36 sm:h-40 bg-white rounded-xl mt-4 relative p-12">
+                    <div className="absolute bottom-[-40px] left-1/2 transform -translate-x-1/2 rounded-full">
                         <button onClick={logout}>
                             <img
 
@@ -66,42 +66,56 @@ const BalanceScreen = () => {
 
                     </div>
                 </div>
+
                 {ready && authenticated ?
                     <div className="flex-grow flex flex-col items-center justify-start p-4 mt-6">
                         <div className="mt-2 text-2xl sm:text-3xl text-center flex justify-center items-center space-x-2">
-                            <span className="truncate max-w-xs">{displayText}</span>
+                            <span className="truncate max-w-xs text-white">{displayText}</span>
                             <FaCopy
-                                className="cursor-pointer text-gray-500 hover:text-gray-700"
+                                className="cursor-pointer text-white hover:text-white"
                                 onClick={handleCopy}
                             />
-                            
+
                             {isCopied && <span className="text-sm text-green-500">Copied!</span>}
                             <img onClick={openPopup} className="w-8 h-8" src="/images/verified.png" />
                         </div>
-                        <div className='w-full flex gap-8 mt-4'>
+                        {/* <div className='w-full flex gap-8 mt-4'>
                             <div className='w-full flex flex-col p-4 justify-center items-center bg-gray-300 rounded-lg'>
                                 <span className='text-[#727774] font-semibold text-lg'>Balance</span>
                                 <span className='text-gray-800 text-2xl'><b>{`${addressData?.formatted.slice(0, 10)} ${addressData?.symbol}`}</b></span>
                             </div>
-                        </div>
-                        <div className="w-full flex flex-col justify-center items-center mt-4">
-                            <img
-                                src="/images/watch.png"
-                                alt="/images/watch.png"
-                                className="w-8 h-8 object-cover"
-                            />
-                            <hr className="w-1/3 h-px my-4 bg-gray-500 border-0" />
-                            <div className="grid grid-cols-2 gap-4 w-full p-4">
-                                {/* {postImages.map((src, index) => (
-                                    <img
-                                        key={index}
-                                        src={src}
-                                        alt={`post-${index}`}
-                                        className="w-full h-44 rounded-lg"
-                                    />
-                                ))} */}
+                        </div> */}
+
+
+                        <button className="group relative w-full mt-4">
+                            <div
+                                className="absolute -inset-1 rounded-xl bg-gradient-to-r from-teal-500 via-emerald-500 to-green-500 opacity-20 blur-xl transition-all duration-500 group-hover:opacity-50 group-hover:blur-2xl"
+                            ></div>
+                            <div
+                                className="relative flex justify-center items-center gap-2 rounded-xl border border-slate-800 bg-slate-950 p-1 pr-4"
+                            >
+                                <div className="flex items-center gap-3 rounded-lg  px-3 py-2">
+                                    <div className="relative">
+                                        <div
+                                            className="absolute -inset-1 rounded-lg 0 blur-sm transition-all duration-300 group-hover:bg-teal-500/30 group-hover:blur-md"
+                                        ></div>
+
+                                    </div>
+
+
+
+                                    <div className="flex flex-col">
+                                        <div className="flex items-center gap-1">
+                                            <span className="text-lg font-bold text-white">{`${addressData?.formatted.slice(0, 10)} ${addressData?.symbol}`}</span>
+
+                                        </div>
+                                        <span className="text-[10px] font-medium text-slate-400">Balance</span>
+                                    </div>
+
+
+                                </div>
                             </div>
-                        </div>
+                        </button>
                     </div>
                     :
                     <div className='w-full flex gap-8 mt-16'>
