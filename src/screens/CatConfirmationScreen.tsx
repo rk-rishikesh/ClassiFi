@@ -113,35 +113,6 @@ const CatConfirmationScreen = () => {
           </div>)}
         <div className="flex flex-col items-center flex-grow p-4 sm:p-5">
           <div className="relative w-full flex-grow flex items-center justify-center"></div>
-          {/* <span className="text-lg mt-4 bg-white p-3 rounded-md shadow-[10px_10px_#727774] sm:text-xl">
-            {currentData[currentIndex].question}
-          </span> */}
-          {/* <div className="flex space-x-4 mt-4 w-10/12 justify-between">
-            <button
-              onClick={() =>
-                handleButtonClick(
-                  "Awesome, you completed 3 Tags today, reward on the way!"
-                )
-              }
-              className="bg-red-500 text-white px-4 py-2 rounded-full text-sm sm:text-base"
-            >
-              ✖
-            </button>
-           
-            <button
-              onClick={() =>
-                handleButtonClick(
-                  "Awesome, you completed 3 Tags today, reward on the way!"
-                )
-              }
-              className="bg-green-500 text-white px-4 py-2 rounded-full text-sm sm:text-base"
-            >
-              ✔
-            </button>
-          </div> */}
-
-
-
         </div>
         <div
           className="card relative flex h-[6em] w-full items-start justify-center overflow-clip rounded-[1.5em] bg-[#B7DFFB] px-[1em] py-[1em] shadow-[0px_2px_2px_0px_#1a4766,0px_2px_8px_0px_#3083bb]"
@@ -154,15 +125,19 @@ const CatConfirmationScreen = () => {
           <div
             className="group absolute bottom-[-1em] flex max-h-[6em] w-full items-center justify-center gap-[24rem]"
           >
-            <label className="yes peer relative cursor-pointer">
-              <input type="checkbox" name="yes" id="yes" className="peer appearance-none" />
+            <label className="yes peer relative cursor-pointer" >
+              <input type="checkbox" name="yes" id="yes" className="peer appearance-none" onClick={() =>
+                handleButtonClick(
+                  "Awesome, you completed 3 Tags today, reward on the way!"
+                )
+              } />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="43"
                 height="90"
                 fill="none"
                 viewBox="0 0 43 90"
-                className="absolute bottom-0 left-1/2 h-[6rem] w-[6rem] origin-bottom -translate-x-1/2 rotate-[45deg] hover:rotate-[40deg] duration-300 peer-checked:rotate-[0deg]"
+                className="absolute bottom-0 left-1/2 h-[6rem] w-[6rem] origin-bottom -translate-x-1/2 rotate-[45deg] hover:rotate-[40deg] duration-300"
               >
                 <path
                   fill="#1269EF"
@@ -201,16 +176,19 @@ const CatConfirmationScreen = () => {
             </label>
 
             <label
-              className="no relative cursor-pointer origin-bottom duration-300 peer-has-[:checked]:rotate-[-160deg]"
-            >
-              <input type="checkbox" name="no" id="no" className="peer appearance-none" />
+              className="no relative cursor-pointer origin-bottom duration-300">
+              <input type="checkbox" name="no" id="no" className="peer appearance-none" onClick={() =>
+                handleButtonClick(
+                  "Awesome, you completed 3 Tags today, reward on the way!"
+                )
+              } />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="42"
                 height="89"
                 fill="none"
                 viewBox="0 0 42 89"
-                className="absolute bottom-0 right-1/2 h-[6rem] w-[6rem] origin-bottom translate-x-1/2 rotate-[-45deg] duration-300 hover:rotate-[-40deg] peer-checked:rotate-0"
+                className="absolute bottom-0 right-1/2 h-[6rem] w-[6rem] origin-bottom translate-x-1/2 rotate-[-45deg] duration-300 hover:rotate-[-40deg]"
               >
                 <path
                   fill="#ED487E"
