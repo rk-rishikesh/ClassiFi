@@ -12,29 +12,9 @@ const CameraScreen = () => {
   const [isCameraOpen, setIsCameraOpen] = useState(true);
   const [photo, setPhoto] = useState<string | null>(null);
   const [isFrontCamera, setIsFrontCamera] = useState(false);
-  const [activeFilterIndex, setActiveFilterIndex] = useState(2);
   const [showPhoto, setShowPhoto] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const category = useSelector((state: RootState) => state.category.category) as CategoryState;
-
-  const filters = (() => {
-    switch (category) {
-      case "cat":
-        return ["/images/fur1.jpg", "/images/fur2.jpg", "/images/fur3.jpg", "/images/fur4.jpg"];
-      case "banana":
-        return ["/images/fruits/fruit1.jpeg", "/images/fruits/fruit2.jpeg", "/images/fruits/fruit3.jpeg", "/images/fruits/fruit4.jpeg"];
-      case "plant":
-        return ["/images/plant/plant1.jpg", "/images/plant/plant2.jpg", "/images/plant/plant3.jpg", "/images/plant/plant4.jpg"];
-      case "skin":
-        return ["/images/rash.jpg"];
-      case "garbage":
-        return ["/images/waste/waste1.png", "/images/waste/waste2.png", "/images/waste/waste3.png", "/images/waste/waste4.png"];
-      case "automobile":
-        return ["/images/automobile/bike1.jpg", "/images/automobile/bike2.jpg", "/images/automobile/bike3.jpg", "/images/automobile/bike4.jpg"];
-      default:
-        return ["/images/fur1.jpg", "/images/fur2.jpg", "/images/fur3.jpg", "/images/fur4.jpg"];
-    }
-  })()
 
   useEffect(() => {
     if (isCameraOpen) {
@@ -69,8 +49,7 @@ const CameraScreen = () => {
     }
   };
 
-  const capturePhoto = (index: number) => {
-    setActiveFilterIndex(index);
+  const capturePhoto = () => {
     if (canvasRef.current && videoRef.current) {
       const context = canvasRef.current.getContext("2d");
       if (context) {
@@ -110,9 +89,11 @@ const CameraScreen = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#F0F4FD] to-[#E0E0E2] relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-[#F0F4FD] to-[#E0E0E2] relative overflow-hidden flex justify-center">
       {!showPhoto ? (
+
         <div id="camera-div" className="flex-grow relative mt-8 md:mt-0">
+
           <video
             ref={videoRef}
             autoPlay
@@ -125,37 +106,27 @@ const CameraScreen = () => {
             width={640}
             height={480}
           ></canvas>
-          <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-full overflow-x-auto flex gap-2 justify-center">
+          <div className="fixed transform -translate-x-1/2 left-1/2" onClick={handleCameraFlip}>
+            <div>
+              <div className="bg-home rounded-full w-76 h-14 md:w-76 md:h-16 flex items-center justify-center p-4">
+                <h1 className="text-xl md:text-2xl font-bold text-white">Rotate Camera</h1>
+              </div>
+            </div>
+          </div>
+          <div className="fixed  bottom-4 left-1/2 transform -translate-x-1/2 w-full overflow-x-auto flex gap-2 justify-center">
+
             <div
               className="flex p-4"
             >
-              {filters.map((filter, index) => (
-                <div
-                  key={index}
-                  className={`w-16 h-16 mx-2 bg-gradient-to-r from-[#e0e4e8] to-[#ffffff] shadow-lg rounded-full border-4 flex items-center justify-center cursor-pointer hover:bg-blue-50 transition-all duration-300`}
-                  onClick={() => {
-                    capturePhoto(index);
-                  }}
-                >
-                  <img
-                    src={filter}
-                    alt={`Filter ${index + 1}`}
-                    className="w-full h-full object-cover rounded-full"
-                  />
-                </div>
-              ))}
+              <div
+                className={`w-16 h-16 mx-2 bg-gradient-to-r from-[#e0e4e8] to-[#ffffff] shadow-lg rounded-full border-4 flex items-center justify-center cursor-pointer hover:bg-blue-50 transition-all duration-300`}
+                onClick={() => {
+                  capturePhoto();
+                }}
+              >
+              </div>
             </div>
           </div>
-          <button
-            onClick={handleCameraFlip}
-            className="w-16 h-16 fixed right-2 z-10 bg-white p-3 rounded-full shadow-lg hover:scale-110 transform transition-all duration-300"
-          >
-            <img
-              src="/images/cameraflip.png"
-              alt="Flip Camera"
-              className="w-full h-full object-contain"
-            />
-          </button>
         </div>
       ) : (
         <div
