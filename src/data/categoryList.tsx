@@ -101,7 +101,7 @@ export const categories = [
                     "/images/categoryFour/Three.jpg",
                     "/images/categoryFour/Four.jpg"
                 ],
-                question: "Is the road completely inaccessible for vehicles?"
+                question: "Is the road completely inaccessible?"
             },
             {
                 id:1,
