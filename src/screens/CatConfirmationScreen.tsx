@@ -11,24 +11,12 @@ import { usePrivy } from "@privy-io/react-auth";
 import { CategoryState } from "../store/stringSlice";
 import { RootState } from "../store/store";
 import { useSelector } from 'react-redux';
-
-const catData = [
-  { img: "/images/cat1.jpg", question: "Is this a cat?" },
-  { img: "/images/cat2.jpg", question: "Is this a cat?" },
-  { img: "/images/cat3.jpg", question: "Is this a cat?" },
-  { img: "/images/cat4.jpg", question: "Is this a cat?" },
-  { img: "/images/cat5.jpg", question: "Is this a cat?" },
-];
-
-const rashData = [
-  { img: "/images/rash/rash1.jpg", question: "Is this a rash?" },
-  { img: "/images/rash/rash2.jpg", question: "Is this a rash?" },
-  { img: "/images/rash/rash3.jpg", question: "Is this a rash?" },
-  { img: "/images/rash/rash4.jpg", question: "Is this a rash?" },
-];
+import { categories } from "../data/categoryList";
 
 const CatConfirmationScreen = () => {
   const category = useSelector((state: RootState) => state.category.category) as CategoryState;
+  const subcategory = useSelector((state: RootState) => state.category.subcategory) as CategoryState;
+  console.log(subcategory)
   const [currentIndex, setCurrentIndex] = useState(0);
   const [bal, setBal] = useState(0);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
@@ -62,7 +50,8 @@ const CatConfirmationScreen = () => {
     }
   });
 
-  const currentData = category === "cat" ? catData : rashData;
+  const currentData = categories[category].items;
+  console.log(currentData[subcategory].images)
 
   const onTaskComplete = async () => {
     if (currentIndex === 2) {
@@ -105,7 +94,7 @@ const CatConfirmationScreen = () => {
       <div
         id="cat-details"
         className="bg-cover bg-center bg-no-repeat flex flex-col rounded-3xl flex-grow mx-3 my-2"
-        style={{ backgroundImage: `url(${currentData[currentIndex].img})` }}
+        style={{ backgroundImage: `url(${currentData[subcategory].images[currentIndex]})` }}
       >
         {ready && authenticated && (
           <div className="flex justify-start p-5">
@@ -120,7 +109,7 @@ const CatConfirmationScreen = () => {
           <span
             className="max-w-[15ch] text-center font-Poppin text-[-0.8em] font-bold text-[#085991]"
           >
-            Is this a drought affected crop?
+            {currentData[subcategory].question}
           </span>
           <div
             className="group absolute bottom-[-1em] flex max-h-[6em] w-full items-center justify-center gap-[24rem]"

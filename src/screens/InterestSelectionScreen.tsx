@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { CategoryState, setCategory } from '../store/stringSlice';
+import { CategoryState, setCategory, setSubCategory, SubCategoryState } from '../store/stringSlice';
 import { categories } from "../data/categoryList";
 
 const InterestSelectionScreen = () => {
   const dispatch = useDispatch();
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const [categoryID, setCategoryID] = useState(100);
 
   const navigate = useNavigate();
 
-  const handleCategorySelection = (category: string, route: string) => {
+  const handleCategorySelection = (category: number, subcategory: number, route: string) => {
     dispatch(setCategory(category as CategoryState));
+    dispatch(setSubCategory(subcategory as SubCategoryState))
     navigate(route);
   };
 
@@ -41,20 +41,6 @@ const InterestSelectionScreen = () => {
             </div>
           ))}
         </>
-        // <div className="grid grid-cols-1 w-full gap-4 px-4 py-2">
-        //   <div onClick={() => handleCategorySelection("cat", "/screen3")} className="group rounded-lg bg-home p-12 transition relative duration-300 cursor-pointer">
-        //     <p className="text-white text-2xl flex justify-center items-center pt-2">Cat</p>
-        //   </div>
-        //   <div onClick={() => handleCategoryExpansion(1)} className="group rounded-lg bg-[url('https://sc0.blr1.cdn.digitaloceanspaces.com/article/204087-pckavysoyx-1729781991.jpg')] bg-cover p-12 transition relative duration-300 cursor-pointer">
-        //     <p className="text-white text-2xl flex justify-center items-center pt-2">Banana</p>
-        //   </div>
-        //   <div onClick={() => handleCategorySelection("banana", "/screen7")} className="group rounded-lg bg-home p-12 transition relative duration-300 cursor-pointer">
-        //     <p className="text-white text-2xl flex justify-center items-center pt-2">Banana</p>
-        //   </div>
-        //   <div onClick={() => handleCategorySelection("banana", "/screen7")} className="group rounded-lg bg-home p-12 transition relative duration-300 cursor-pointer">
-        //     <p className="text-white text-2xl flex justify-center items-center pt-2">Banana</p>
-        //   </div>
-        // </div>
       }
 
       {categoryID < 100 &&
@@ -73,7 +59,7 @@ const InterestSelectionScreen = () => {
                 ></span>
               </div>
               {categories[categoryID].items.map((item) => (
-                <div className="w-full border-b border-coolGray-100" onClick={() => handleCategorySelection("cat", "/screen3")}>
+                <div className="w-full border-b border-coolGray-100" onClick={() => handleCategorySelection(categoryID, item.id, "/screen3")}>
                   <div className="flex flex-wrap items-center justify-between py-4 -m-2">
                     <div className="w-auto p-2">
                       <div className="flex flex-wrap items-center -m-2">

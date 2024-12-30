@@ -22,7 +22,7 @@ const LoginScreen = () => {
       </div>
       <div className="flex flex-col items-center mt-8 sm:mt-12">
         <div className="w-56 h-56 flex items-center justify-center">
-          <img src="https://wallpapers.com/images/hd/science-minimalist-phone-zhh4cq6u2g4lxbm5.jpg" />
+          <img src="/images/home.jpg" />
         </div>
       </div>
       <div className="flex items-center justify-center mb-8 sm:mb-12">

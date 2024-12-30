@@ -19,13 +19,6 @@ const BalanceScreen = () => {
 
     const textToCopy = address;
     const displayText = `${textToCopy?.slice(0, 6)}...${textToCopy?.slice(-6)}`;
-    // const postImages = [
-    //     "/images/user-posts/cat1.jpg",
-    //     "/images/user-posts/cat2.jpg",
-    //     "/images/user-posts/cat3.jpg",
-    //     "/images/user-posts/cat4.jpg",
-    //     "/images/user-posts/cat5.jpg",
-    // ];
 
     const handleCopy = () => {
         if (textToCopy) {
@@ -79,20 +72,13 @@ const BalanceScreen = () => {
                             {isCopied && <span className="text-sm text-green-500">Copied!</span>}
                             <img onClick={openPopup} className="w-8 h-8" src="/images/verified.png" />
                         </div>
-                        {/* <div className='w-full flex gap-8 mt-4'>
-                            <div className='w-full flex flex-col p-4 justify-center items-center bg-gray-300 rounded-lg'>
-                                <span className='text-[#727774] font-semibold text-lg'>Balance</span>
-                                <span className='text-gray-800 text-2xl'><b>{`${addressData?.formatted.slice(0, 10)} ${addressData?.symbol}`}</b></span>
-                            </div>
-                        </div> */}
-
-
-                        <button className="group relative w-full mt-4">
+   
+                        <button className="group relative w-full mt-12 flex justify-center">
                             <div
-                                className="absolute -inset-1 rounded-xl bg-gradient-to-r from-teal-500 via-emerald-500 to-green-500 opacity-20 blur-xl transition-all duration-500 group-hover:opacity-50 group-hover:blur-2xl"
+                                className="w-60 h-60 absolute -inset-1 rounded-full bg-gradient-to-r from-teal-500 via-emerald-500 to-green-500 opacity-20 blur-xl transition-all duration-500 group-hover:opacity-50 group-hover:blur-2xl"
                             ></div>
                             <div
-                                className="relative flex justify-center items-center gap-2 rounded-xl border border-slate-800 bg-slate-950 p-1 pr-4"
+                                className="w-60 h-60 relative flex justify-center items-center gap-2 rounded-full border border-slate-800 bg-slate-950 p-1 pr-4 "
                             >
                                 <div className="flex items-center gap-3 rounded-lg  px-3 py-2">
                                     <div className="relative">
