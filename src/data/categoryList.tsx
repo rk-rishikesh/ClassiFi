@@ -14,7 +14,7 @@ export const categories = [
                     "/images/categoryOne/Three.jpg",
                     "/images/categoryOne/Four.jpg"
                 ],
-                question: "Are these drought-stressed crops?"
+                question: "Do these crops show signs of drought stress?"
             },
             {
                 id:1,

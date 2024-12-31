@@ -138,11 +138,11 @@ const CameraScreen = () => {
               <img
                 src={photo}
                 alt="Captured"
-                className="w-[100%] h-[100vh] object-cover rounded-lg shadow-lg border border-gray-200"
+                className="w-full h-[100vh] object-cover rounded-lg shadow-lg border border-gray-200"
               />
               <button
                 onClick={handlePublish}
-                className="fixed bottom-8 z-10 mt-6 px-8 py-3 bg-gray-600 text-white text-lg font-medium rounded-lg shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-2xl"
+                className="fixed bottom-8 z-10 mt-6 px-8 py-3 bg-home text-white text-lg font-medium rounded-lg shadow-lg hover:scale-105 transition-all duration-300 hover:shadow-2xl"
               >
                 Publish
               </button>
@@ -151,26 +151,28 @@ const CameraScreen = () => {
         </div>
       )}
       {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center bg-opacity-50">
-          <div className="flex flex-col items-center justify-centerp-6 rounded-lg transform scale-100 transition-transform duration-300 hover:scale-105">
+        <div className="fixed inset-0 flex flex-col items-center justify-center bg-greenfield gap-64">
+          <div className="fixed p-6 rounded-lg transform scale-100 transition-transform duration-300 hover:scale-105">
             <img
-              src="/images/tick.png"
+              src="/images/tick.jpg"
               alt="Captured"
-              className="w-full object-cover rounded-lg"
+              className="w-32 rounded-lg bottom-4"
             />
-            <h2 className="flex items-center justify-center text-xl text-gray-800 font-semibold">
-              Your data is securedly stored on Filecoin
+
+          </div>
+          <div className="fixed bottom-2 mb-8 flex justify-center items-center flex-col">
+            <h2 className="flex text-xl text-yellow-200 font-semibold">
+              Data Stored on Binance Greenfield
             </h2>
 
             <button
               onClick={closePopup}
-              className="mt-4 px-6 py-2 bg-gray-500 text-white text-sm font-medium rounded-md shadow hover:shadow-lg transition-all duration-300"
+              className="mt-4 px-6 py-2 bg-home text-white text-sm font-medium rounded-md shadow hover:shadow-lg transition-all duration-300"
             >
-              Close
+              Home
             </button>
           </div>
         </div>
-
       )}
     </div>
   );
